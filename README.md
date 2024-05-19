@@ -222,12 +222,8 @@ this integration. The execution of Medpipe is done by the
 updating the target fasta file. The FASTA format is used to store
 nucleotide sequences and proteins.
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics{Pictures/Figure2.png}
-  \caption{Figure 1S -- Integration between Pannotator and Medpipe.}
-  \label{fig:figure3}
-\end{figure}
+
+![Figure 1S -- Integration between Pannotator and Medpipe.](Pictures/Figure2.png)
 
 Code 5 defines the medpipePostURL variable to store a curl command used
 to send a POST request to the /v1/medpipe/run route. To proceed with
@@ -269,12 +265,8 @@ configured\]/swagger-ui.html\". The documentation provides detailed
 information about each endpoint, as shown in Figure 2S, including the
 HTTP methods allowed and the expected responses.
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics{Pictures/Figure3.png}
-  \caption{Figure 2S -- Swagger API for Medpipe $\mu$ $\sigma$ documentation.}
-  \label{fig:figure3}
-\end{figure}
+![Figure 2S -- Swagger API for Medpipe $\mu$ $\sigma$ documentation.](Pictures/Figure3.png)
+
 
 #### Logs
 
