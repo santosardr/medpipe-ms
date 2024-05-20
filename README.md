@@ -6,6 +6,71 @@ This microservice was developed using the Kotlin language to deliver the local s
 Supplementary Material
 ======================
 
+Running the Medpipe microservice
+-------------------
+A good thing about microservices is that you can have multiple servers running them. In case of down-service of one, we can try another. 
+I intend to have at least three servers providing the Medpipe microservice. To change to a new server, you should alter the "server" variable in the below script.
+I added a test file comprising two secreted proteins called ["target.fasta"](https://raw.githubusercontent.com/santosardr/medpipe-ms/main/target.fasta). However, feel free to try your proteins.
+```text
+>Cp1002_0126a
+MHFKTRMSLFCTATTAATSLAVASLQPAAAVEQPSNTIVSTIMLPTKATVTKTFTVSSTK
+GTARADYSSNSITVQPGDTISVKIHSQGGYTEFSELTEFVPSVGRLHTESITFKEGDSGP
+HPLKVAGWNATSQADRVTFRTNDGKPKAITLDTTLEYTYTVGVRATGDPSTRFQLSSSDS
+NTVFTSASGPKIHVKKTLPSWLSGAFPGAIFDSLTNLLSPILRALNIL
+The below sequences are the target.fasta content:
+>Cp1002_1802
+MLFPSRFQGTFLKPLITAALAVFCVGFTPATAQVIPYTDPDGFYTSIPSAENTTPGTVLS
+QRDVPMPVLDVLVKMKRIAYTSTHPNGFSTPVTGAVLLPTAPWRGPGPRPVALLAPGTQG
+AGDSCAPSKLLTMGGEYEMFSAAALLNRGWTVAVTDYQGLGTPGNHTYMNRKAQGAALLD
+LGRAITTLNLPDVNNHTPIIPWGYSQGGGASAAAAEMHRAYAPDVNVVLAYAGGVPANLL
+SVSSSLEGTALTGALGYVITGMYEIYPEIREPIHNFLNTRGQVWLDQTSRDCLPESLLTM
+PLPDTSILTVSGQRLTSLISDDVFQRAISEQQIGLTAPDIPVFVAQGLNDGIIPAEQARI
+MVNGWLSQGADVTYWEDPSPALDKLSGHIHVLASSFLPAVEWAEQRLAALGQPTP
+```
+It's important to note that complex names should be avoided. Otherwise, third-party software may trigger execution failures. As a precaution, I use the [valifasta](https://github.com/santosardr/non-CSPs/tree/main/src/valifasta) software to 'clean' protein files before running Medpipe. Please be aware that this important preprocessing step still needs to be implemented in the Medpipe microservice.
+The below [script](https://raw.githubusercontent.com/santosardr/medpipe-ms/main/medpipe-ms-call) sends the target file to the server. After finishing the processing, three reports will be returned and printed.
+
+```bash
+#!/bin/bash
+server="bioinfo.facom.ufu.br"
+email="medpipe.agent@gmail.com"
+
+dirfastaFile=target.fasta # Do not alter this file name
+cellWall="65" # Measure in amino acids
+organismGroup="1" # 0=gram-negative, and 1=gram-positive bacteria
+medpipePostURL="curl --location "$server"/v1/medpipe/run --form file=@$dirfastaFile --form cellWall=$cellWall --form organismGroup=$organismGroup --form email=$email"
+echo "URL: $medpipePostURL"
+processId=`$medpipePostURL`
+echo "Result: $processId"
+
+getStatusUrl="curl --location $server/v1/medpipe/$processId/status"
+statusexec=`$getStatusUrl`
+echo "status: $statusexec"
+
+while [ $statusexec -gt 0 ]; do
+    echo "Status: $statusexec"
+    sleep 20
+    getStatusUrl="curl --location $server/v1/medpipe/$processId/status"
+    statusexec=`$getStatusUrl`
+done        
+echo "The microservice is done. Results:"
+
+getUrl="curl --location $server/v1/medpipe/$processId/predictions 2>/dev/null"
+Result=$(eval "$getUrl")
+echo "MED stats:"
+echo $Result
+
+getUrl="curl --location $server/v1/medpipe/$processId/tmh 2>/dev/null"
+Result=$(eval "$getUrl")
+echo "TMH:"
+echo $Result
+
+getUrl="curl --location $server/v1/medpipe/$processId/signal 2>/dev/null"
+Result=$(eval "$getUrl")
+echo "SIGNAL:"
+echo $Result
+```
+
 Medpipe microservice Overview 
 -------------------
 
