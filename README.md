@@ -15,7 +15,7 @@ The below [script](https://raw.githubusercontent.com/santosardr/medpipe-ms/main/
 ```bash
 #!/bin/bash
 server="bioinfo.facom.ufu.br"
-email="medpipe.agent@gmail.com"
+email="medpipe.agent@gmail.com" #This the sender address. You can try your own e-mail to have the medpipe files stored in your mailbox.
 
 dirfastaFile=target.fasta # Do not alter this file name
 cellWall="65" # Measure in amino acids
@@ -61,7 +61,6 @@ MHFKTRMSLFCTATTAATSLAVASLQPAAAVEQPSNTIVSTIMLPTKATVTKTFTVSSTK
 GTARADYSSNSITVQPGDTISVKIHSQGGYTEFSELTEFVPSVGRLHTESITFKEGDSGP
 HPLKVAGWNATSQADRVTFRTNDGKPKAITLDTTLEYTYTVGVRATGDPSTRFQLSSSDS
 NTVFTSASGPKIHVKKTLPSWLSGAFPGAIFDSLTNLLSPILRALNIL
-The below sequences are the target.fasta content:
 >Cp1002_1802
 MLFPSRFQGTFLKPLITAALAVFCVGFTPATAQVIPYTDPDGFYTSIPSAENTTPGTVLS
 QRDVPMPVLDVLVKMKRIAYTSTHPNGFSTPVTGAVLLPTAPWRGPGPRPVALLAPGTQG
