@@ -9,25 +9,7 @@ Supplementary Material
 Running the Medpipe microservice
 -------------------
 A good thing about microservices is that you can have multiple servers running them. In case of down-service of one, we can try another. 
-I intend to have at least three servers providing the Medpipe microservice. To change to a new server, you should alter the "server" variable in the below script.
-I added a test file comprising two secreted proteins called ["target.fasta"](https://raw.githubusercontent.com/santosardr/medpipe-ms/main/target.fasta). However, feel free to try your proteins.
-```text
->Cp1002_0126a
-MHFKTRMSLFCTATTAATSLAVASLQPAAAVEQPSNTIVSTIMLPTKATVTKTFTVSSTK
-GTARADYSSNSITVQPGDTISVKIHSQGGYTEFSELTEFVPSVGRLHTESITFKEGDSGP
-HPLKVAGWNATSQADRVTFRTNDGKPKAITLDTTLEYTYTVGVRATGDPSTRFQLSSSDS
-NTVFTSASGPKIHVKKTLPSWLSGAFPGAIFDSLTNLLSPILRALNIL
-The below sequences are the target.fasta content:
->Cp1002_1802
-MLFPSRFQGTFLKPLITAALAVFCVGFTPATAQVIPYTDPDGFYTSIPSAENTTPGTVLS
-QRDVPMPVLDVLVKMKRIAYTSTHPNGFSTPVTGAVLLPTAPWRGPGPRPVALLAPGTQG
-AGDSCAPSKLLTMGGEYEMFSAAALLNRGWTVAVTDYQGLGTPGNHTYMNRKAQGAALLD
-LGRAITTLNLPDVNNHTPIIPWGYSQGGGASAAAAEMHRAYAPDVNVVLAYAGGVPANLL
-SVSSSLEGTALTGALGYVITGMYEIYPEIREPIHNFLNTRGQVWLDQTSRDCLPESLLTM
-PLPDTSILTVSGQRLTSLISDDVFQRAISEQQIGLTAPDIPVFVAQGLNDGIIPAEQARI
-MVNGWLSQGADVTYWEDPSPALDKLSGHIHVLASSFLPAVEWAEQRLAALGQPTP
-```
-It's important to note that complex names should be avoided. Otherwise, third-party software may trigger execution failures. As a precaution, I use the [valifasta](https://github.com/santosardr/non-CSPs/tree/main/src/valifasta) software to 'clean' protein files before running Medpipe. Please be aware that this important preprocessing step still needs to be implemented in the Medpipe microservice.
+I intend to have at least three servers providing the Medpipe microservice. To change to a new server, you should alter the "server" variable in the [script](https://raw.githubusercontent.com/santosardr/medpipe-ms/main/medpipe-ms-call).
 The below [script](https://raw.githubusercontent.com/santosardr/medpipe-ms/main/medpipe-ms-call) sends the target file to the server. After finishing the processing, three reports will be returned and printed.
 
 ```bash
@@ -70,6 +52,27 @@ Result=$(eval "$getUrl")
 echo "SIGNAL:"
 echo $Result
 ```
+
+I added a test file comprising two secreted proteins called ["target.fasta"](https://raw.githubusercontent.com/santosardr/medpipe-ms/main/target.fasta). However, feel free to try your proteins.
+
+```text
+>Cp1002_0126a
+MHFKTRMSLFCTATTAATSLAVASLQPAAAVEQPSNTIVSTIMLPTKATVTKTFTVSSTK
+GTARADYSSNSITVQPGDTISVKIHSQGGYTEFSELTEFVPSVGRLHTESITFKEGDSGP
+HPLKVAGWNATSQADRVTFRTNDGKPKAITLDTTLEYTYTVGVRATGDPSTRFQLSSSDS
+NTVFTSASGPKIHVKKTLPSWLSGAFPGAIFDSLTNLLSPILRALNIL
+The below sequences are the target.fasta content:
+>Cp1002_1802
+MLFPSRFQGTFLKPLITAALAVFCVGFTPATAQVIPYTDPDGFYTSIPSAENTTPGTVLS
+QRDVPMPVLDVLVKMKRIAYTSTHPNGFSTPVTGAVLLPTAPWRGPGPRPVALLAPGTQG
+AGDSCAPSKLLTMGGEYEMFSAAALLNRGWTVAVTDYQGLGTPGNHTYMNRKAQGAALLD
+LGRAITTLNLPDVNNHTPIIPWGYSQGGGASAAAAEMHRAYAPDVNVVLAYAGGVPANLL
+SVSSSLEGTALTGALGYVITGMYEIYPEIREPIHNFLNTRGQVWLDQTSRDCLPESLLTM
+PLPDTSILTVSGQRLTSLISDDVFQRAISEQQIGLTAPDIPVFVAQGLNDGIIPAEQARI
+MVNGWLSQGADVTYWEDPSPALDKLSGHIHVLASSFLPAVEWAEQRLAALGQPTP
+```
+It's important to note that complex names should be avoided. Otherwise, third-party software may trigger execution failures. As a precaution, I use the [valifasta](https://github.com/santosardr/non-CSPs/tree/main/src/valifasta) software to 'clean' protein files before running Medpipe. Please be aware that this important preprocessing step still needs to be implemented in the Medpipe microservice.
+
 
 Medpipe microservice Overview 
 -------------------
