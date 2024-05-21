@@ -111,8 +111,6 @@ SVSSSLEGTALTGALGYVITGMYEIYPEIREPIHNFLNTRGQVWLDQTSRDCLPESLLTM
 PLPDTSILTVSGQRLTSLISDDVFQRAISEQQIGLTAPDIPVFVAQGLNDGIIPAEQARI
 MVNGWLSQGADVTYWEDPSPALDKLSGHIHVLASSFLPAVEWAEQRLAALGQPTP
 ```
-It's important to note that complex names should be avoided. Otherwise, third-party software may trigger execution failures. As a precaution, I use the [valifasta](https://github.com/santosardr/non-CSPs/tree/main/src/valifasta) software to 'clean' protein files before running Medpipe. Please be aware that this important preprocessing step still needs to be implemented in the Medpipe microservice.
-
 
 Medpipe microservice Overview 
 -------------------
