@@ -12,6 +12,44 @@ A good thing about microservices is that you can have multiple servers running t
 I intend to have at least three servers providing the Medpipe microservice. To change to a new server, you should alter the "server" variable in the [script](https://raw.githubusercontent.com/santosardr/medpipe-ms/main/medpipe-ms-call).
 The below [script](https://raw.githubusercontent.com/santosardr/medpipe-ms/main/medpipe-ms-call) sends the target file to the server. After finishing the processing, three reports will be returned and printed.
 
+###  Python version 
+
+```python
+import requests
+import time
+
+server = "bioinfo.facom.ufu.br"
+email = "medpipe.agent@gmail.com"
+dirfastaFile = "target.fasta"
+cellWall = "65"
+organismGroup = "1"
+
+# Post to the server
+files = {'file': open(dirfastaFile, 'rb')}
+data = {'cellWall': cellWall, 'organismGroup': organismGroup, 'email': email}
+response = requests.post(f"http://{server}/v1/medpipe/run", files=files, data=data)
+processId = response.text
+
+# Get status
+statusUrl = f"http://{server}/v1/medpipe/{processId}/status"
+status = requests.get(statusUrl).text
+
+# Wait for the process to finish
+while int(status) > 0:
+    print(f"Status: {status}")
+    time.sleep(20)
+    status = requests.get(statusUrl).text
+
+# Get results
+resultUrls = [f"http://{server}/v1/medpipe/{processId}/{result}" for result in ['predictions', 'tmh', 'signal']]
+for resultUrl in resultUrls:
+    result = requests.get(resultUrl).text
+    print(f"{resultUrl.split('/')[-1].upper()}:")
+    print(result)
+```
+
+###  Shell script version
+
 ```bash
 #!/bin/bash
 server="bioinfo.facom.ufu.br"
