@@ -1,7 +1,8 @@
 import requests
 import time
 
-server = "bioinfo.facom.ufu.br"
+server = "labgenserv.ibtec.ufu.br"
+#server="bioinfo.facom.ufu.br"
 email = "medpipe.agent@gmail.com"
 dirfastaFile = "target.fasta"
 cellWall = "65"

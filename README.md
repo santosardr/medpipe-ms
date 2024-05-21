@@ -9,7 +9,7 @@ Supplementary Material
 Running the Medpipe microservice
 -------------------
 A good thing about microservices is that you can have multiple servers running them. In case of down-service of one, we can try another. 
-I intend to have at least three servers providing the Medpipe microservice. To change to a new server, you should alter the "server" variable in the [script](https://raw.githubusercontent.com/santosardr/medpipe-ms/main/medpipe-ms-call.py).
+I intend to have at least three servers providing the Medpipe microservice. To change to a new server, you should alter the "server" variable in the [script](https://raw.githubusercontent.com/santosardr/medpipe-ms/main/medpipe-ms-call.py). If the server name specified in the below-uncommented line of the code is not responding, please try the commented line. To do this, invert the commented and uncommented lines in the scripts regarding the variable 'server.'
 The below [script](https://raw.githubusercontent.com/santosardr/medpipe-ms/main/medpipe-ms-call.py) sends the target file to the server. After finishing the processing, three reports will be returned and printed.
 
 ###  Python version 
@@ -18,7 +18,9 @@ The below [script](https://raw.githubusercontent.com/santosardr/medpipe-ms/main/
 import requests
 import time
 
-server = "bioinfo.facom.ufu.br"
+server = "labgenserv.ibtec.ufu.br"
+#server = "bioinfo.facom.ufu.br"
+
 email = "medpipe.agent@gmail.com"
 dirfastaFile = "target.fasta"
 cellWall = "65"
@@ -52,7 +54,8 @@ for resultUrl in resultUrls:
 
 ```bash
 #!/bin/bash
-server="bioinfo.facom.ufu.br"
+server = "labgenserv.ibtec.ufu.br"
+#server = "bioinfo.facom.ufu.br"
 email="medpipe.agent@gmail.com" #This the sender address. You can try your own e-mail to have the medpipe files stored in your mailbox.
 
 dirfastaFile=target.fasta # Do not alter this file name
