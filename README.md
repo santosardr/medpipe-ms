@@ -9,8 +9,8 @@ Supplementary Material
 Running the Medpipe microservice
 -------------------
 A good thing about microservices is that you can have multiple servers running them. In case of down-service of one, we can try another. 
-I intend to have at least three servers providing the Medpipe microservice. To change to a new server, you should alter the "server" variable in the [script](https://raw.githubusercontent.com/santosardr/medpipe-ms/main/medpipe-ms-call).
-The below [script](https://raw.githubusercontent.com/santosardr/medpipe-ms/main/medpipe-ms-call) sends the target file to the server. After finishing the processing, three reports will be returned and printed.
+I intend to have at least three servers providing the Medpipe microservice. To change to a new server, you should alter the "server" variable in the [script](https://raw.githubusercontent.com/santosardr/medpipe-ms/main/medpipe-ms-call.py).
+The below [script](https://raw.githubusercontent.com/santosardr/medpipe-ms/main/medpipe-ms-call.py) sends the target file to the server. After finishing the processing, three reports will be returned and printed.
 
 ###  Python version 
 
