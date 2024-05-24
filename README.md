@@ -18,8 +18,8 @@ The below [script](https://raw.githubusercontent.com/santosardr/medpipe-ms/main/
 import requests
 import time
 
-server = "labgenserv.ibtec.ufu.br"
-#server = "bioinfo.facom.ufu.br"
+#server = "labgenserv.ibtec.ufu.br"
+server = "bioinfo.facom.ufu.br"
 
 email = "medpipe.agent@gmail.com"
 dirfastaFile = "target.fasta"
@@ -54,8 +54,8 @@ for resultUrl in resultUrls:
 
 ```bash
 #!/bin/bash
-server = "labgenserv.ibtec.ufu.br"
-#server = "bioinfo.facom.ufu.br"
+#server = "labgenserv.ibtec.ufu.br"
+server = "bioinfo.facom.ufu.br"
 email="medpipe.agent@gmail.com" #This the sender address. You can try your own e-mail to have the medpipe files stored in your mailbox.
 
 dirfastaFile=target.fasta # Do not alter this file name

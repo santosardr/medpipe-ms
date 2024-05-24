@@ -1,6 +1,6 @@
 #!/bin/bash
-server = "labgenserv.ibtec.ufu.br"
-#server="bioinfo.facom.ufu.br"
+#server = "labgenserv.ibtec.ufu.br"
+server="bioinfo.facom.ufu.br"
 email="medpipe.agent@gmail.com"
 
 dirfastaFile=target.fasta # Do not alter this file name
