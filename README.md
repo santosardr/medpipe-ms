@@ -18,7 +18,7 @@ The below [script](https://raw.githubusercontent.com/santosardr/medpipe-ms/main/
 import requests
 import time
 
-#server = "labgenserv.ibtec.ufu.br"
+#server = "200.131.192.66"
 server = "bioinfo.facom.ufu.br"
 
 email = "medpipe.agent@gmail.com"
@@ -54,7 +54,7 @@ for resultUrl in resultUrls:
 
 ```bash
 #!/bin/bash
-#server = "labgenserv.ibtec.ufu.br"
+#server = "200.131.192.66"
 server = "bioinfo.facom.ufu.br"
 email="medpipe.agent@gmail.com" #This the sender address. You can try your own e-mail to have the medpipe files stored in your mailbox.
 
