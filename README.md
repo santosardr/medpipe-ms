@@ -20,7 +20,7 @@ import time
 
 
 # List of available IP addresses or server names
-servers = ["bioinfo.facom.ufu.br", "200.131.192.66",   "129.159.55.229"]
+servers = ["ms-medpipe.facom.ufu.br", "bioinfo.facom.ufu.br", "labgenserv.ibtec.ufu.br"]
 
 
 email = "medpipe.agent@gmail.com"
@@ -124,8 +124,9 @@ if __name__ == "__main__":
 
 ```bash
 #!/bin/bash
-#server = "200.131.192.66"
-server = "bioinfo.facom.ufu.br"
+server="ms-medpipe.facom.ufu.br"
+#server="bioinfo.facom.ufu.br"
+#server="labgenserv.ibtec.ufu.br"
 email="medpipe.agent@gmail.com" #This the sender address. You can try your own e-mail to have the medpipe files stored in your mailbox.
 
 dirfastaFile=target.fasta # Do not alter this file name

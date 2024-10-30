@@ -3,7 +3,7 @@ import time
 
 
 # List of available IP addresses or server names
-servers = ["bioinfo.facom.ufu.br", "200.131.192.66",   "129.159.55.229"]
+servers = ["ms-medpipe.facom.ufu.br", "bioinfo.facom.ufu.br", "labgenserv.ibtec.ufu.br"]
 
 
 email = "medpipe.agent@gmail.com"
